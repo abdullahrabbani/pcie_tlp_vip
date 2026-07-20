@@ -1,0 +1,73 @@
+QuestaSim vlog 10.6c Compiler 2017.07 Jul 25 2017
+Start time: 15:35:40 on Jul 20,2026
+vlog -sv "+acc" "+define+DATA_WIDTH=32" -l pcie_tlp_compile.log -f ../pcie_tlp_compile.f 
+-- Compiling package pcie_tlp_globals_pkg
+-- Compiling package pcie_tlp_rc_pkg
+** Note: (vlog-2286) ../../src/hvl_top/rc/pcie_tlp_rc_pkg.sv(6): Using implicit +incdir+/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Importing package pcie_tlp_globals_pkg
+-- Compiling package pcie_tlp_ep_pkg
+-- Compiling package pcie_tlp_env_pkg
+-- Importing package pcie_tlp_rc_pkg
+-- Importing package pcie_tlp_ep_pkg
+-- Compiling package pcie_tlp_rc_seq_pkg
+-- Compiling package pcie_tlp_ep_seq_pkg
+-- Compiling package pcie_tlp_vseq_base_pkg
+-- Importing package pcie_tlp_env_pkg
+-- Importing package pcie_tlp_rc_seq_pkg
+-- Importing package pcie_tlp_ep_seq_pkg
+-- Compiling package pcie_tlp_if_sv_unit
+-- Importing package pcie_tlp_globals_pkg
+-- Compiling interface pcie_tlp_if
+-- Compiling package pcie_tlp_rc_agent_bfm_sv_unit
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Importing package pcie_tlp_globals_pkg
+-- Importing package pcie_tlp_rc_pkg
+-- Compiling module pcie_tlp_rc_agent_bfm
+-- Compiling package pcie_tlp_rc_driver_bfm_sv_unit
+-- Importing package pcie_tlp_globals_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Compiling interface pcie_tlp_rc_driver_bfm
+-- Compiling package pcie_tlp_rc_monitor_bfm_sv_unit
+-- Importing package pcie_tlp_globals_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Compiling interface pcie_tlp_rc_monitor_bfm
+-- Compiling package pcie_tlp_ep_agent_bfm_sv_unit
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Importing package pcie_tlp_globals_pkg
+-- Importing package pcie_tlp_ep_pkg
+-- Compiling module pcie_tlp_ep_agent_bfm
+-- Compiling package pcie_tlp_ep_driver_bfm_sv_unit
+-- Importing package pcie_tlp_globals_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Compiling interface pcie_tlp_ep_driver_bfm
+-- Compiling package pcie_tlp_ep_monitor_bfm_sv_unit
+-- Importing package pcie_tlp_globals_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Compiling interface pcie_tlp_ep_monitor_bfm
+-- Compiling package pcie_tlp_rc_assertions_sv_unit
+-- Importing package pcie_tlp_globals_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Compiling interface pcie_tlp_rc_assertions
+-- Compiling package pcie_tlp_ep_assertions_sv_unit
+-- Importing package pcie_tlp_globals_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Compiling interface pcie_tlp_ep_assertions
+-- Compiling package pcie_tlp_tb_rc_assertions_sv_unit
+-- Importing package pcie_tlp_globals_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Compiling module pcie_tlp_tb_rc_assertions
+-- Compiling package pcie_tlp_tb_ep_assertions_sv_unit
+-- Importing package pcie_tlp_globals_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Compiling module pcie_tlp_tb_ep_assertions
+-- Compiling module pcie_tlp_hdl_top
+-- Compiling module pcie_tlp_hvl_top
+
+Top level modules:
+	pcie_tlp_tb_rc_assertions
+	pcie_tlp_tb_ep_assertions
+	pcie_tlp_hdl_top
+	pcie_tlp_hvl_top
+End time: 15:35:48 on Jul 20,2026, Elapsed time: 0:00:08
+Errors: 0, Warnings: 0

@@ -1,0 +1,18 @@
+#!/bin/bash
+echo "PCIe TLP VIP Script"
+echo "Usage: ./pcie_tlp_script [compile|sim|clean]"
+
+case $1 in
+  compile)
+    cd sim && make compile
+    ;;
+  sim)
+    cd sim && make sim TEST=$2
+    ;;
+  clean)
+    cd sim && make clean
+    ;;
+  *)
+    echo "Unknown command"
+    ;;
+esac

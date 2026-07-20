@@ -1,0 +1,4 @@
+# PCIe TLP Regression Test List
+pcie_tlp_base_test
+pcie_tlp_mem_read_test
+pcie_tlp_mem_write_test
