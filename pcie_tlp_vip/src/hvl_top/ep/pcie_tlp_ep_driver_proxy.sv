@@ -9,13 +9,11 @@ class pcie_tlp_ep_driver_proxy extends uvm_driver #(pcie_tlp_ep_tx);
     pcie_tlp_ep_agent_config cfg;
     pcie_tlp_ep_memory memory;
     virtual pcie_tlp_ep_driver_bfm bfm;
-    uvm_analysis_port #(pcie_tlp_ep_tx) rsp_port;
     semaphore write_sem;
     semaphore read_sem;
 
     function new(string name = "pcie_tlp_ep_driver_proxy", uvm_component parent = null);
         super.new(name, parent);
-        rsp_port = new("rsp_port", this);
         write_sem = new(1);
         read_sem = new(1);
     endfunction
@@ -53,13 +51,13 @@ class pcie_tlp_ep_driver_proxy extends uvm_driver #(pcie_tlp_ep_tx);
     function void start_of_simulation_phase(uvm_phase phase);
         super.start_of_simulation_phase(phase);
         `uvm_info(get_type_name(), "start_of_simulation_phase started", UVM_HIGH)
-        bfm.wait_for_reset();
     endfunction
 
     task run_phase(uvm_phase phase);
         pcie_tlp_ep_tx req;
         super.run_phase(phase);
         `uvm_info(get_type_name(), "run_phase started", UVM_HIGH)
+        bfm.wait_for_reset();
         forever begin
             seq_item_port.get_next_item(req);
             process_request(req);

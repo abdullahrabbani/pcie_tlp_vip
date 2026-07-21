@@ -127,29 +127,6 @@ interface pcie_tlp_if #(
         $display("[%t] Receiving TLP via interface", $time);
     endtask
 
-    initial begin
-        tx_data = '0;
-        tx_keep = '0;
-        tx_valid = 1'b0;
-        tx_ready = 1'b0;
-        tx_sop = 1'b0;
-        tx_eop = 1'b0;
-        tx_empty = 3'b0;
-        tx_seq_num = 4'b0;
-        tx_vc_id = 2'b0;
-        tx_tc = 3'b0;
-        rx_data = '0;
-        rx_keep = '0;
-        rx_valid = 1'b0;
-        rx_ready = 1'b0;
-        rx_sop = 1'b0;
-        rx_eop = 1'b0;
-        rx_empty = 3'b0;
-        rx_seq_num = 4'b0;
-        rx_vc_id = 2'b0;
-        rx_tc = 3'b0;
-    end
-
 endinterface : pcie_tlp_if
 
 `endif

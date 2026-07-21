@@ -10,6 +10,5 @@ module pcie_tlp_hdl_top;
     pcie_tlp_rc_agent_bfm #(.RC_ID(0)) rc_bfm (intf);
     pcie_tlp_ep_agent_bfm #(.EP_ID(0)) ep_bfm (intf);
     initial begin $dumpfile("waveform.vcd"); $dumpvars(0, pcie_tlp_hdl_top); end
-    initial begin #1000; `uvm_info("HDL_TOP", "Simulation finished", UVM_LOW); $finish; end
 endmodule
 `endif

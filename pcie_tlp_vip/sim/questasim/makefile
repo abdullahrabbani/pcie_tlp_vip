@@ -136,8 +136,8 @@ simulate:
 	# Use -novopt for no optimization - Makes the simulation slower
 	# vsim -pli finesim.so -coverage top
 	vsim -vopt \
-	work.hvl_top \
-	work.hdl_top \
+	work.pcie_tlp_hvl_top \
+	work.pcie_tlp_hdl_top \
 	-voptargs=+acc=npr \
 	-sv_seed $(seed) \
 	-assertdebug \

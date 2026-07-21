@@ -63,7 +63,7 @@ interface pcie_tlp_rc_driver_bfm (
         drv_cb.tx_seq_num <= 4'b0;
         drv_cb.tx_vc_id   <= 2'b0;
         drv_cb.tx_tc      <= 3'b0;
-        drv_cb.rx_ready   <= 1'b0;
+        drv_cb.rx_ready   <= 1'b1;
     endtask
 
     task automatic send_tlp(
@@ -78,7 +78,6 @@ interface pcie_tlp_rc_driver_bfm (
         `uvm_info(name, $sformatf("Sending TLP ID %0d, %0d beats",
                     tlp.transaction_id, total_beats), UVM_HIGH)
 
-        wait_for_reset();
         repeat (wait_states) @(drv_cb);
 
         @(drv_cb);

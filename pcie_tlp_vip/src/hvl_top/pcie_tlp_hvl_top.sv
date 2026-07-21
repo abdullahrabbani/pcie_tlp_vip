@@ -7,6 +7,7 @@ module pcie_tlp_hvl_top;
     import uvm_pkg::*;
     `include "uvm_macros.svh"
     import pcie_tlp_globals_pkg::*;
+    import pcie_tlp_test_pkg::*;
 
     logic clk;
     logic rst_n;

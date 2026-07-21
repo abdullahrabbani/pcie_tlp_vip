@@ -4,6 +4,7 @@
 
 import pcie_tlp_globals_pkg::*;
 import uvm_pkg::*;
+import pcie_tlp_ep_pkg::*;
 `include "uvm_macros.svh"
 
 interface pcie_tlp_ep_driver_bfm (
@@ -32,6 +33,7 @@ interface pcie_tlp_ep_driver_bfm (
 );
 
     string name = "PCIE_TLP_EP_DRIVER_BFM";
+    pcie_tlp_ep_driver_proxy ep_drv_proxy_h;
 
     initial begin
         `uvm_info(name, $sformatf("%s instantiated", name), UVM_LOW)
@@ -113,7 +115,6 @@ interface pcie_tlp_ep_driver_bfm (
         `uvm_info(name, $sformatf("Sending completion TLP ID %0d, %0d beats",
                     comp_tlp.transaction_id, total_beats), UVM_HIGH)
 
-        wait_for_reset();
         repeat (wait_states) @(drv_cb);
 
         @(drv_cb);

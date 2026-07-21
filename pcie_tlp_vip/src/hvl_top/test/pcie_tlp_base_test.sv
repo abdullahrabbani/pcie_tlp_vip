@@ -7,13 +7,14 @@ import pcie_tlp_globals_pkg::*;
 import pcie_tlp_rc_pkg::*;
 import pcie_tlp_ep_pkg::*;
 import pcie_tlp_env_pkg::*;
+import pcie_tlp_vseq_base_pkg::*;
 
 class pcie_tlp_base_test extends uvm_test;
     `uvm_component_utils(pcie_tlp_base_test)
 
     pcie_tlp_env_config cfg;
     pcie_tlp_env env;
-  //  pcie_tlp_virtual_base_seq seq;
+    pcie_tlp_virtual_base_seq seq;
 
     function new(string name = "pcie_tlp_base_test", uvm_component parent = null);
         super.new(name, parent);
@@ -24,7 +25,7 @@ class pcie_tlp_base_test extends uvm_test;
         `uvm_info(get_type_name(), "build_phase started", UVM_LOW)
         setup_env_config();
         env = pcie_tlp_env::type_id::create("env", this);
-        set_timeout(100ms);
+        uvm_top.set_timeout(100ms);
     endfunction
 
     function void connect_phase(uvm_phase phase);
@@ -46,8 +47,8 @@ class pcie_tlp_base_test extends uvm_test;
         `uvm_info(get_type_name(), "run_phase started", UVM_LOW)
         phase.raise_objection(this);
         super.run_phase(phase);
-       // seq = pcie_tlp_virtual_base_seq::type_id::create("seq");
-       // seq.start(env.vseqr);
+        seq = pcie_tlp_virtual_base_seq::type_id::create("seq");
+        seq.start(env.vseqr);
         #(100us);
         phase.drop_objection(this);
         `uvm_info(get_type_name(), "run_phase completed", UVM_LOW)

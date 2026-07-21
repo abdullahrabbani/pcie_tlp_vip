@@ -59,9 +59,7 @@
 // ============================================================================
 // Tests
 // ============================================================================
-../../src/hvl_top/test/pcie_tlp_base_test.sv
-//../../src/hvl_top/test/pcie_tlp_mem_read_test.sv
-//../../src/hvl_top/test/pcie_tlp_mem_write_test.sv
+../../src/hvl_top/test/pcie_tlp_test_pkg.sv
 
 // ============================================================================
 // Interface

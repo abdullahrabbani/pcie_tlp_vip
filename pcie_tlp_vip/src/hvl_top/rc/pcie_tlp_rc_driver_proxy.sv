@@ -7,6 +7,7 @@ import uvm_pkg::*; `include "uvm_macros.svh"; import pcie_tlp_globals_pkg::*; im
 class pcie_tlp_rc_driver_proxy extends uvm_driver #(pcie_tlp_rc_tx);
     `uvm_component_utils(pcie_tlp_rc_driver_proxy)
     virtual pcie_tlp_rc_driver_bfm bfm;
+    pcie_tlp_rc_agent_config cfg;
     uvm_analysis_port #(pcie_tlp_rc_tx) resp_port;
 
     function new(string name = "pcie_tlp_rc_driver_proxy", uvm_component parent = null);
@@ -35,7 +36,6 @@ class pcie_tlp_rc_driver_proxy extends uvm_driver #(pcie_tlp_rc_tx);
     function void start_of_simulation_phase(uvm_phase phase);
         super.start_of_simulation_phase(phase);
         `uvm_info(get_type_name(), "start_of_simulation_phase started", UVM_HIGH)
-        bfm.wait_for_reset();
     endfunction
 
     task run_phase(uvm_phase phase);
@@ -43,6 +43,7 @@ class pcie_tlp_rc_driver_proxy extends uvm_driver #(pcie_tlp_rc_tx);
         tlp_t tlp;
         super.run_phase(phase);
         `uvm_info(get_type_name(), "run_phase started", UVM_HIGH)
+        bfm.wait_for_reset();
         forever begin
             seq_item_port.get_next_item(req);
             pcie_tlp_rc_seq_item_converter::from_tx_class(req, tlp);

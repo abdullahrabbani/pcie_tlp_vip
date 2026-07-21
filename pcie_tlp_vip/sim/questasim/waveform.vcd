@@ -1,0 +1,50 @@
+$date
+	Mon Jul 20 23:29:46 2026
+$end
+$version
+	QuestaSim Version 10.6c
+$end
+$timescale
+	1ns
+$end
+
+$scope module pcie_tlp_hdl_top $end
+$var reg 1 ! clk $end
+$var reg 1 " rst_n $end
+
+$scope module rc_bfm $end
+$var parameter 32 # RC_ID $end
+$upscope $end
+
+$scope module ep_bfm $end
+$var parameter 32 $ EP_ID $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+1"
+b0 #
+b0 $
+$end
+#5
+1!
+#10
+0"
+0!
+#15
+1!
+#20
+0!
+#25
+1!
+1"
+#30
+0!
+#35
+1!
+#40
+0!
+#45
+1!

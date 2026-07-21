@@ -1,13 +1,214 @@
-# vsim -vopt work.hvl_top work.hdl_top -voptargs="+acc=npr" -sv_seed random -assertdebug "+UVM_TESTNAME=pcie_tlp_base_test" "+UVM_VERBOSITY=UVM_NONE" -l pcie_tlp_base_test/pcie_tlp_base_test.log -sva -c -do "log -r /*; add wave -r /*; run -all; exit" -wlf pcie_tlp_base_test/waveform.wlf 
-# Start time: 15:35:57 on Jul 20,2026
+# vsim -vopt work.pcie_tlp_hvl_top work.pcie_tlp_hdl_top -voptargs="+acc=npr" -sv_seed random -assertdebug "+UVM_TESTNAME=pcie_tlp_base_test" "+UVM_VERBOSITY=UVM_MEDIUM" -l pcie_tlp_base_test/pcie_tlp_base_test.log -sva -c -do "log -r /*; add wave -r /*; run -all; exit" -wlf pcie_tlp_base_test/waveform.wlf 
+# Start time: 23:22:01 on Jul 20,2026
 # ** Note: (vsim-3812) Design is being optimized...
-# ** Error: (vopt-13130) Failed to find design unit hvl_top.
-#         Searched libraries:
-#             work
-# ** Error: (vopt-13130) Failed to find design unit hdl_top.
-#         Searched libraries:
-#             work
-# Optimization failed
-# Error loading design
-# End time: 15:35:57 on Jul 20,2026, Elapsed time: 0:00:00
-# Errors: 2, Warnings: 0
+# //  Questa Sim
+# //  Version 10.6c linux Jul 25 2017
+# //
+# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.pcie_tlp_ep_driver_bfm(fast)
+# Loading work.pcie_tlp_ep_monitor_bfm(fast)
+# Loading work.pcie_tlp_globals_pkg(fast)
+# Loading mtiUvm.uvm_pkg
+# Loading work.pcie_tlp_ep_pkg(fast)
+# Loading work.pcie_tlp_ep_seq_pkg(fast)
+# Loading work.pcie_tlp_rc_driver_bfm(fast)
+# Loading work.pcie_tlp_rc_monitor_bfm(fast)
+# Loading work.pcie_tlp_rc_pkg(fast)
+# Loading work.pcie_tlp_rc_seq_pkg(fast)
+# Loading work.pcie_tlp_env_pkg(fast)
+# Loading work.pcie_tlp_vseq_base_pkg(fast)
+# Loading work.pcie_tlp_test_pkg(fast)
+# Loading work.pcie_tlp_hvl_top(fast)
+# Loading work.pcie_tlp_if_sv_unit(fast)
+# Loading work.pcie_tlp_if(fast__1)
+# Loading work.pcie_tlp_hdl_top(fast)
+# Loading work.pcie_tlp_if(fast)
+# Loading work.pcie_tlp_rc_agent_bfm_sv_unit(fast)
+# Loading work.pcie_tlp_rc_agent_bfm(fast)
+# Loading work.pcie_tlp_rc_driver_bfm_sv_unit(fast)
+# Loading work.pcie_tlp_rc_driver_bfm(fast)
+# Loading work.pcie_tlp_rc_monitor_bfm_sv_unit(fast)
+# Loading work.pcie_tlp_rc_monitor_bfm(fast)
+# Loading work.pcie_tlp_ep_agent_bfm_sv_unit(fast)
+# Loading work.pcie_tlp_ep_agent_bfm(fast)
+# Loading work.pcie_tlp_ep_driver_bfm_sv_unit(fast)
+# Loading work.pcie_tlp_ep_driver_bfm(fast)
+# Loading work.pcie_tlp_ep_monitor_bfm_sv_unit(fast)
+# Loading work.pcie_tlp_ep_monitor_bfm(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.pcie_tlp_if(fast)
+# ** Warning: (vsim-3764) ../../src/hvl_top/env//pcie_tlp_scoreboard.sv(38): Stand-alone call to function 'try_put' treated as implicit void cast.
+#    Time: 0 ns  Iteration: 0  Region: /pcie_tlp_env_pkg File: ../../src/hvl_top/env/pcie_tlp_env_pkg.sv
+# ** Warning: (vsim-3764) ../../src/hvl_top/env//pcie_tlp_scoreboard.sv(42): Stand-alone call to function 'try_put' treated as implicit void cast.
+#    Time: 0 ns  Iteration: 0  Region: /pcie_tlp_env_pkg File: ../../src/hvl_top/env/pcie_tlp_env_pkg.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv(18): Variable '/pcie_tlp_hdl_top/intf/tx_ready', driven via a port connection, is multiply driven. See ../../src/hdl_top/ep_agent_bfm/pcie_tlp_ep_agent_bfm.sv(18).
+#    Time: 0 ns  Iteration: 0  Instance: /pcie_tlp_hdl_top/intf File: ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv(29): Variable '/pcie_tlp_hdl_top/intf/rx_ready', driven via a port connection, is multiply driven. See ../../src/hdl_top/rc_agent_bfm/pcie_tlp_rc_agent_bfm.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /pcie_tlp_hdl_top/intf File: ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv(15): Variable '/pcie_tlp_hdl_top/intf/tx_data', driven via a port connection, is multiply driven. See ../../src/hdl_top/rc_agent_bfm/pcie_tlp_rc_agent_bfm.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /pcie_tlp_hdl_top/intf File: ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv(16): Variable '/pcie_tlp_hdl_top/intf/tx_keep', driven via a port connection, is multiply driven. See ../../src/hdl_top/rc_agent_bfm/pcie_tlp_rc_agent_bfm.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /pcie_tlp_hdl_top/intf File: ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv(17): Variable '/pcie_tlp_hdl_top/intf/tx_valid', driven via a port connection, is multiply driven. See ../../src/hdl_top/rc_agent_bfm/pcie_tlp_rc_agent_bfm.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /pcie_tlp_hdl_top/intf File: ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv(19): Variable '/pcie_tlp_hdl_top/intf/tx_sop', driven via a port connection, is multiply driven. See ../../src/hdl_top/rc_agent_bfm/pcie_tlp_rc_agent_bfm.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /pcie_tlp_hdl_top/intf File: ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv(20): Variable '/pcie_tlp_hdl_top/intf/tx_eop', driven via a port connection, is multiply driven. See ../../src/hdl_top/rc_agent_bfm/pcie_tlp_rc_agent_bfm.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /pcie_tlp_hdl_top/intf File: ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv(21): Variable '/pcie_tlp_hdl_top/intf/tx_empty', driven via a port connection, is multiply driven. See ../../src/hdl_top/rc_agent_bfm/pcie_tlp_rc_agent_bfm.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /pcie_tlp_hdl_top/intf File: ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv(22): Variable '/pcie_tlp_hdl_top/intf/tx_seq_num', driven via a port connection, is multiply driven. See ../../src/hdl_top/rc_agent_bfm/pcie_tlp_rc_agent_bfm.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /pcie_tlp_hdl_top/intf File: ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv(23): Variable '/pcie_tlp_hdl_top/intf/tx_vc_id', driven via a port connection, is multiply driven. See ../../src/hdl_top/rc_agent_bfm/pcie_tlp_rc_agent_bfm.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /pcie_tlp_hdl_top/intf File: ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv(24): Variable '/pcie_tlp_hdl_top/intf/tx_tc', driven via a port connection, is multiply driven. See ../../src/hdl_top/rc_agent_bfm/pcie_tlp_rc_agent_bfm.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /pcie_tlp_hdl_top/intf File: ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv
+# ** Warning: (vsim-3839) ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv(29): Variable '/pcie_tlp_hdl_top/intf/rx_ready', driven via a port connection, is multiply driven. See ../../src/hdl_top/rc_agent_bfm/pcie_tlp_rc_agent_bfm.sv(14).
+#    Time: 0 ns  Iteration: 0  Instance: /pcie_tlp_hdl_top/intf File: ../../src/hdl_top/pcie_tlp_interface/pcie_tlp_if.sv
+# Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
+# Sv_Seed = 445395635
+# log -r /*
+#  add wave -r /*
+#  run -all
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO @ 0: reporter [RNTST] Running test pcie_tlp_base_test...
+# UVM_INFO ../../src/hdl_top/rc_agent_bfm/pcie_tlp_rc_driver_bfm.sv(37) @ 0: reporter [PCIE_TLP_RC_DRIVER_BFM] PCIE_TLP_RC_DRIVER_BFM instantiated
+# UVM_INFO ../../src/hdl_top/rc_agent_bfm/pcie_tlp_rc_monitor_bfm.sv(39) @ 0: reporter [PCIE_TLP_RC_MONITOR_BFM] PCIE_TLP_RC_MONITOR_BFM instantiated
+# UVM_INFO ../../src/hdl_top/rc_agent_bfm/pcie_tlp_rc_agent_bfm.sv(67) @ 0: reporter [PCIE_TLP_RC_AGENT_BFM] RC Agent BFM instantiated with ID 0
+# UVM_INFO ../../src/hdl_top/ep_agent_bfm/pcie_tlp_ep_driver_bfm.sv(39) @ 0: reporter [PCIE_TLP_EP_DRIVER_BFM] PCIE_TLP_EP_DRIVER_BFM instantiated
+# UVM_INFO ../../src/hdl_top/ep_agent_bfm/pcie_tlp_ep_monitor_bfm.sv(39) @ 0: reporter [PCIE_TLP_EP_MONITOR_BFM] PCIE_TLP_EP_MONITOR_BFM instantiated
+# UVM_INFO ../../src/hdl_top/ep_agent_bfm/pcie_tlp_ep_agent_bfm.sv(71) @ 0: reporter [PCIE_TLP_EP_AGENT_BFM] EP Agent BFM instantiated with ID 0
+# UVM_INFO ../../src/hvl_top/test//pcie_tlp_base_test.sv(25) @ 0: uvm_test_top [pcie_tlp_base_test] build_phase started
+# UVM_INFO ../../src/hvl_top/env//pcie_tlp_env.sv(30) @ 0: uvm_test_top.env [pcie_tlp_env] Building environment: RC=1, EP=1, Scoreboard=1
+# UVM_INFO ../../src/hvl_top/test//pcie_tlp_base_test.sv(33) @ 0: uvm_test_top [pcie_tlp_base_test] connect_phase started
+# UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+# -------------------------------------------------------------------
+# Name                       Type                         Size  Value
+# -------------------------------------------------------------------
+# uvm_test_top               pcie_tlp_base_test           -     @478 
+#   env                      pcie_tlp_env                 -     @514 
+#     ep_agent               pcie_tlp_ep_agent            -     @529 
+#       driver               pcie_tlp_ep_driver_proxy     -     @764 
+#         rsp_port           uvm_analysis_port            -     @779 
+#         seq_item_port      uvm_seq_item_pull_port       -     @771 
+#       monitor              pcie_tlp_ep_monitor_proxy    -     @1005
+#         comp_ap            uvm_analysis_port            -     @1020
+#         req_ap             uvm_analysis_port            -     @1012
+#       read_sequencer       pcie_tlp_ep_read_sequencer   -     @787 
+#         rsp_export         uvm_analysis_export          -     @794 
+#         seq_item_export    uvm_seq_item_pull_imp        -     @888 
+#         arbitration_queue  array                        0     -    
+#         lock_queue         array                        0     -    
+#         num_last_reqs      integral                     32    'd1  
+#         num_last_rsps      integral                     32    'd1  
+#       write_sequencer      pcie_tlp_ep_write_sequencer  -     @896 
+#         rsp_export         uvm_analysis_export          -     @903 
+#         seq_item_export    uvm_seq_item_pull_imp        -     @997 
+#         arbitration_queue  array                        0     -    
+#         lock_queue         array                        0     -    
+#         num_last_reqs      integral                     32    'd1  
+#         num_last_rsps      integral                     32    'd1  
+#     rc_agent               pcie_tlp_rc_agent            -     @522 
+#       driver               pcie_tlp_rc_driver_proxy     -     @1047
+#         resp_port          uvm_analysis_port            -     @1070
+#         rsp_port           uvm_analysis_port            -     @1062
+#         seq_item_port      uvm_seq_item_pull_port       -     @1054
+#       monitor              pcie_tlp_rc_monitor_proxy    -     @1296
+#         rx_ap              uvm_analysis_port            -     @1311
+#         tx_ap              uvm_analysis_port            -     @1303
+#       read_sequencer       pcie_tlp_rc_read_sequencer   -     @1078
+#         rsp_export         uvm_analysis_export          -     @1085
+#         seq_item_export    uvm_seq_item_pull_imp        -     @1179
+#         arbitration_queue  array                        0     -    
+#         lock_queue         array                        0     -    
+#         num_last_reqs      integral                     32    'd1  
+#         num_last_rsps      integral                     32    'd1  
+#       write_sequencer      pcie_tlp_rc_write_sequencer  -     @1187
+#         rsp_export         uvm_analysis_export          -     @1194
+#         seq_item_export    uvm_seq_item_pull_imp        -     @1288
+#         arbitration_queue  array                        0     -    
+#         lock_queue         array                        0     -    
+#         num_last_reqs      integral                     32    'd1  
+#         num_last_rsps      integral                     32    'd1  
+#     sb                     pcie_tlp_scoreboard          -     @645 
+#       act_fifo             uvm_tlm_analysis_fifo #(T)   -     @715 
+#         analysis_export    uvm_analysis_imp             -     @754 
+#         get_ap             uvm_analysis_port            -     @746 
+#         get_peek_export    uvm_get_peek_imp             -     @730 
+#         put_ap             uvm_analysis_port            -     @738 
+#         put_export         uvm_put_imp                  -     @722 
+#       act_imp              uvm_analysis_imp_act         -     @660 
+#       exp_fifo             uvm_tlm_analysis_fifo #(T)   -     @668 
+#         analysis_export    uvm_analysis_imp             -     @707 
+#         get_ap             uvm_analysis_port            -     @699 
+#         get_peek_export    uvm_get_peek_imp             -     @683 
+#         put_ap             uvm_analysis_port            -     @691 
+#         put_export         uvm_put_imp                  -     @675 
+#       exp_imp              uvm_analysis_imp_exp         -     @652 
+#     vseqr                  pcie_tlp_virtual_sequencer   -     @536 
+#       rsp_export           uvm_analysis_export          -     @543 
+#       seq_item_export      uvm_seq_item_pull_imp        -     @637 
+#       arbitration_queue    array                        0     -    
+#       lock_queue           array                        0     -    
+#       num_last_reqs        integral                     32    'd1  
+#       num_last_rsps        integral                     32    'd1  
+# -------------------------------------------------------------------
+# 
+# UVM_INFO ../../src/hvl_top/test//pcie_tlp_base_test.sv(38) @ 0: uvm_test_top [pcie_tlp_base_test] end_of_elaboration_phase - Test configured
+# UVM_INFO ../../src/hvl_top/test//pcie_tlp_base_test.sv(43) @ 0: uvm_test_top [pcie_tlp_base_test] start_of_simulation_phase started
+# UVM_INFO ../../src/hvl_top/test//pcie_tlp_base_test.sv(47) @ 0: uvm_test_top [pcie_tlp_base_test] run_phase started
+# UVM_INFO ../../src/hvl_top/test/virtual_sequences//pcie_tlp_virtual_base_seq.sv(30) @ 0: uvm_test_top.env.vseqr@@seq [pcie_tlp_virtual_base_seq] Starting virtual base sequence with 10 transactions
+# UVM_WARNING @ 0: uvm_test_top.env.rc_agent.read_sequencer@@rc_seq [uvm_sequence_base] Body definition undefined
+# UVM_INFO ../../src/hvl_top/test/sequences/rc_sequences//pcie_tlp_rc_base_seq.sv(38) @ 0: uvm_test_top.env.rc_agent.read_sequencer@@rc_seq [pcie_tlp_rc_base_seq] Starting RC sequence: 5 reads, 5 writes, 0 config, 0 IO
+# UVM_WARNING @ 0: uvm_test_top.env.ep_agent.read_sequencer@@ep_seq [uvm_sequence_base] Body definition undefined
+# UVM_INFO ../../src/hvl_top/test/sequences/ep_sequences//pcie_tlp_ep_base_seq.sv(30) @ 0: uvm_test_top.env.ep_agent.read_sequencer@@ep_seq [pcie_tlp_ep_base_seq] Starting EP sequence: 5 write completions, 5 read completions
+# UVM_INFO ../../src/hvl_top/pcie_tlp_hvl_top.sv(25) @ 20: reporter [HVL_TOP] Reset deasserted
+# UVM_INFO ../../src/hdl_top/pcie_tlp_hdl_top.sv(8) @ 25: reporter [HDL_TOP] Reset deasserted
+# UVM_INFO ../../src/hvl_top/test/sequences/ep_sequences//pcie_tlp_ep_base_seq.sv(55) @ 25: uvm_test_top.env.ep_agent.read_sequencer@@ep_seq [pcie_tlp_ep_base_seq] Sending WRITE completion TLP ID 1416050012, addr=0x00000254
+# UVM_INFO ../../src/hvl_top/test/sequences/rc_sequences//pcie_tlp_rc_base_seq.sv(67) @ 25: uvm_test_top.env.rc_agent.read_sequencer@@rc_seq [pcie_tlp_rc_base_seq] Issued WRITE TLP ID 274818986, addr=0x00000634, len=256
+# UVM_INFO ../../src/hvl_top/ep//pcie_tlp_ep_driver_proxy.sv(82) @ 25: uvm_test_top.env.ep_agent.driver [pcie_tlp_ep_driver_proxy] Processing request TLP ID 1416050012, fmt=TLP_FMT_MEM_WRITE, type=TLP_TYPE_MEM_WR, addr=0x00000254
+# UVM_INFO ../../src/hvl_top/rc//pcie_tlp_rc_driver_proxy.sv(52) @ 25: uvm_test_top.env.rc_agent.driver [pcie_tlp_rc_driver_proxy] Sending TLP ID 274818986
+# ** Fatal: (SIGSEGV) Bad handle or reference.
+#    Time: 45 ns  Iteration: 2  Process: /pcie_tlp_rc_pkg::pcie_tlp_rc_monitor_proxy::run_phase/#FORK#55_f6d0c20 File: ../../src/hvl_top/rc//pcie_tlp_rc_monitor_proxy.sv
+# Fatal error in Function pcie_tlp_rc_pkg/pcie_tlp_rc_seq_item_converter::to_tx_class at ../../src/hvl_top/rc//pcie_tlp_rc_seq_item_converter.sv line 28
+# 
+# HDL call sequence:
+# Stopped at ../../src/hvl_top/rc//pcie_tlp_rc_seq_item_converter.sv 28 Function pcie_tlp_rc_pkg/pcie_tlp_rc_seq_item_converter::to_tx_class
+# called from  ../../src/hvl_top/rc//pcie_tlp_rc_monitor_proxy.sv 76 Task pcie_tlp_rc_pkg/pcie_tlp_rc_monitor_proxy::sample_rx_tlps
+# called from  ../../src/hvl_top/rc//pcie_tlp_rc_monitor_proxy.sv 55 Task pcie_tlp_rc_pkg/pcie_tlp_rc_monitor_proxy::run_phase
+# 
+#  exit
+# End time: 23:29:46 on Jul 20,2026, Elapsed time: 0:07:45
+# Errors: 2, Warnings: 14

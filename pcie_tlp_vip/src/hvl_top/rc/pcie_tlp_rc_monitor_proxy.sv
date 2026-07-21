@@ -44,12 +44,12 @@ class pcie_tlp_rc_monitor_proxy extends uvm_monitor;
     function void start_of_simulation_phase(uvm_phase phase);
         super.start_of_simulation_phase(phase);
         `uvm_info(get_type_name(), "start_of_simulation_phase started", UVM_HIGH)
-        bfm.wait_for_reset();
     endfunction
 
     task run_phase(uvm_phase phase);
         super.run_phase(phase);
         `uvm_info(get_type_name(), "run_phase started", UVM_HIGH)
+        bfm.wait_for_reset();
         fork
             sample_tx_tlps();
             sample_rx_tlps();

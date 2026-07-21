@@ -4,6 +4,7 @@
 
 import pcie_tlp_globals_pkg::*;
 import uvm_pkg::*;
+import pcie_tlp_ep_pkg::*;
 `include "uvm_macros.svh"
 
 interface pcie_tlp_ep_monitor_bfm (
@@ -12,7 +13,7 @@ interface pcie_tlp_ep_monitor_bfm (
     input  logic [63:0] tx_data,
     input  logic [7:0]  tx_keep,
     input  logic        tx_valid,
-    output logic        tx_ready,
+    input  logic        tx_ready,
     input  logic        tx_sop,
     input  logic        tx_eop,
     input  logic [2:0]  tx_empty,
@@ -22,7 +23,7 @@ interface pcie_tlp_ep_monitor_bfm (
     input  logic [63:0] rx_data,
     input  logic [7:0]  rx_keep,
     input  logic        rx_valid,
-    output logic        rx_ready,
+    input  logic        rx_ready,
     input  logic        rx_sop,
     input  logic        rx_eop,
     input  logic [2:0]  rx_empty,
@@ -32,6 +33,7 @@ interface pcie_tlp_ep_monitor_bfm (
 );
 
     string name = "PCIE_TLP_EP_MONITOR_BFM";
+    pcie_tlp_ep_monitor_proxy ep_mon_proxy_h;
 
     initial begin
         `uvm_info(name, $sformatf("%s instantiated", name), UVM_LOW)
@@ -47,22 +49,20 @@ interface pcie_tlp_ep_monitor_bfm (
 
     clocking mon_cb @(posedge clk);
         default input #1step output #1step;
-        input  tx_data, tx_keep, tx_valid, tx_sop, tx_eop, tx_empty,
+        input  tx_data, tx_keep, tx_valid, tx_ready, tx_sop, tx_eop, tx_empty,
                tx_seq_num, tx_vc_id, tx_tc,
-               rx_data, rx_keep, rx_valid, rx_sop, rx_eop, rx_empty,
+               rx_data, rx_keep, rx_valid, rx_ready, rx_sop, rx_eop, rx_empty,
                rx_seq_num, rx_vc_id, rx_tc;
-        output tx_ready, rx_ready;
     endclocking
 
     task default_values();
-        mon_cb.tx_ready <= 1'b0;
-        mon_cb.rx_ready <= 1'b0;
+        // Monitor is a passive observer and must never drive tx_ready/rx_ready;
+        // those are owned by the driver BFMs on each side of the link.
     endtask
 
     task automatic sample_request(output tlp_t req);
         automatic int payload_dwords;
         `uvm_info(name, "Sampling request TLP", UVM_HIGH)
-        mon_cb.rx_ready <= 1'b1;
 
         do begin
             @(mon_cb);
@@ -89,9 +89,6 @@ interface pcie_tlp_ep_monitor_bfm (
         req.transaction_id = mon_cb.rx_seq_num;
         req.timestamp = $time;
 
-        @(mon_cb);
-        mon_cb.rx_ready <= 1'b0;
-
         `uvm_info(name, $sformatf("Sampled request TLP ID %0d, size %0d bytes",
                    req.transaction_id, req.payload_size), UVM_HIGH)
     endtask
@@ -99,7 +96,6 @@ interface pcie_tlp_ep_monitor_bfm (
     task automatic sample_completion(output tlp_t comp);
         automatic int payload_dwords;
         `uvm_info(name, "Sampling completion TLP", UVM_HIGH)
-        mon_cb.tx_ready <= 1'b1;
 
         do begin
             @(mon_cb);
@@ -125,9 +121,6 @@ interface pcie_tlp_ep_monitor_bfm (
         comp.payload_size = payload_dwords * 4;
         comp.transaction_id = mon_cb.tx_seq_num;
         comp.timestamp = $time;
-
-        @(mon_cb);
-        mon_cb.tx_ready <= 1'b0;
 
         `uvm_info(name, $sformatf("Sampled completion TLP ID %0d, size %0d bytes",
                    comp.transaction_id, comp.payload_size), UVM_HIGH)

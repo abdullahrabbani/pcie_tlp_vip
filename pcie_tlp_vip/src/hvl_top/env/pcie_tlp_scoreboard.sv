@@ -5,13 +5,18 @@
 import uvm_pkg::*; `include "uvm_macros.svh"
 import pcie_tlp_globals_pkg::*;
 
+`uvm_analysis_imp_decl(_exp)
+`uvm_analysis_imp_decl(_act)
+
 class pcie_tlp_scoreboard extends uvm_scoreboard;
     `uvm_component_utils(pcie_tlp_scoreboard)
 
-    uvm_analysis_imp #(tlp_t, pcie_tlp_scoreboard) exp_imp;
-    uvm_analysis_imp #(tlp_t, pcie_tlp_scoreboard) act_imp;
-    uvm_tlm_analysis_fifo #(tlp_t) exp_fifo;
-    uvm_tlm_analysis_fifo #(tlp_t) act_fifo;
+    // exp_imp receives RC-side transmitted transactions (what RC sent),
+    // act_imp receives EP-side received transactions (what EP got).
+    uvm_analysis_imp_exp #(pcie_tlp_rc_tx, pcie_tlp_scoreboard) exp_imp;
+    uvm_analysis_imp_act #(pcie_tlp_ep_tx, pcie_tlp_scoreboard) act_imp;
+    uvm_tlm_analysis_fifo #(pcie_tlp_rc_tx) exp_fifo;
+    uvm_tlm_analysis_fifo #(pcie_tlp_ep_tx) act_fifo;
 
     int total_compare;
     int pass_count;
@@ -27,32 +32,31 @@ class pcie_tlp_scoreboard extends uvm_scoreboard;
 
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-        exp_fifo.set_size(1024);
-        act_fifo.set_size(1024);
     endfunction
 
-    function void write_exp(tlp_t t);
-        exp_fifo.put(t);
+    function void write_exp(pcie_tlp_rc_tx t);
+        exp_fifo.try_put(t);
     endfunction
 
-    function void write_act(tlp_t t);
-        act_fifo.put(t);
+    function void write_act(pcie_tlp_ep_tx t);
+        act_fifo.try_put(t);
     endfunction
 
     task run_phase(uvm_phase phase);
         super.run_phase(phase);
         forever begin
-            tlp_t exp_t, act_t;
+            pcie_tlp_rc_tx exp_t;
+            pcie_tlp_ep_tx act_t;
             exp_fifo.get(exp_t);
             act_fifo.get(act_t);
             total_compare++;
-            if (compare_tlp(exp_t, act_t)) begin
+            if (compare_tlp(exp_t.tlp, act_t.request_tlp)) begin
                 pass_count++;
-                `uvm_info(get_type_name(), $sformatf("Comparison PASSED for TLP ID %0d", exp_t.transaction_id), UVM_HIGH)
+                `uvm_info(get_type_name(), $sformatf("Comparison PASSED for TLP ID %0d", exp_t.tlp.transaction_id), UVM_HIGH)
             end else begin
                 fail_count++;
-                `uvm_error(get_type_name(), $sformatf("Comparison FAILED for TLP ID %0d", exp_t.transaction_id))
-                print_mismatch(exp_t, act_t);
+                `uvm_error(get_type_name(), $sformatf("Comparison FAILED for TLP ID %0d", exp_t.tlp.transaction_id))
+                print_mismatch(exp_t.tlp, act_t.request_tlp);
             end
         end
     endtask

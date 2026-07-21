@@ -4,6 +4,7 @@
 
 import pcie_tlp_globals_pkg::*;
 import uvm_pkg::*;
+import pcie_tlp_rc_pkg::*;
 `include "uvm_macros.svh"
 
 interface pcie_tlp_rc_monitor_bfm (
@@ -12,7 +13,7 @@ interface pcie_tlp_rc_monitor_bfm (
     input  logic [63:0] tx_data,
     input  logic [7:0]  tx_keep,
     input  logic        tx_valid,
-    output logic        tx_ready,
+    input  logic        tx_ready,
     input  logic        tx_sop,
     input  logic        tx_eop,
     input  logic [2:0]  tx_empty,
@@ -22,7 +23,7 @@ interface pcie_tlp_rc_monitor_bfm (
     input  logic [63:0] rx_data,
     input  logic [7:0]  rx_keep,
     input  logic        rx_valid,
-    output logic        rx_ready,
+    input  logic        rx_ready,
     input  logic        rx_sop,
     input  logic        rx_eop,
     input  logic [2:0]  rx_empty,
@@ -32,6 +33,7 @@ interface pcie_tlp_rc_monitor_bfm (
 );
 
     string name = "PCIE_TLP_RC_MONITOR_BFM";
+    pcie_tlp_rc_monitor_proxy rc_mon_proxy_h;
 
     initial begin
         `uvm_info(name, $sformatf("%s instantiated", name), UVM_LOW)
@@ -47,16 +49,15 @@ interface pcie_tlp_rc_monitor_bfm (
 
     clocking mon_cb @(posedge clk);
         default input #1step output #1step;
-        input  tx_data, tx_keep, tx_valid, tx_sop, tx_eop, tx_empty,
+        input  tx_data, tx_keep, tx_valid, tx_ready, tx_sop, tx_eop, tx_empty,
                tx_seq_num, tx_vc_id, tx_tc,
-               rx_data, rx_keep, rx_valid, rx_sop, rx_eop, rx_empty,
+               rx_data, rx_keep, rx_valid, rx_ready, rx_sop, rx_eop, rx_empty,
                rx_seq_num, rx_vc_id, rx_tc;
-        output tx_ready, rx_ready;
     endclocking
 
     task default_values();
-        mon_cb.tx_ready <= 1'b0;
-        mon_cb.rx_ready <= 1'b0;
+        // Monitor is a passive observer and must never drive tx_ready/rx_ready;
+        // those are owned by the driver BFMs on each side of the link.
     endtask
 
     task automatic sample_tx_tlp(output tlp_t tlp);
